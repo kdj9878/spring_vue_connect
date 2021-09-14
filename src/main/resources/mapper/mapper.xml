@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" -->
 
-<mapper namespace="com.example.demo.mapperInterface.MyMapper">
-    <select id="showList" resultType="com.example.demo.dto.member">
+<mapper namespace="com.example.demo.mapperInterface.ListMapper">
+    <select id="AllList" resultType="com.example.demo.dto.ListDTO">
         select * from list
     </select>
 

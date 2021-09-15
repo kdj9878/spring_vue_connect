@@ -1,24 +1,34 @@
 
 <template>
-  <div id="app">
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">List</router-link>
-      
-
-
-  </div>
-  <router-view></router-view>
+  <div>
+    <header>
+      <div>made by 동준</div>
+      <router-link to="/" id="home-name">Movie Store</router-link>
+        <div id="header-menu">
+          <div id="nav" v-for="(key, index) in Menu" :key="index">
+            <router-link :to="key.link">{{key.Menu}}</router-link>
+          </div>
+        </div>
+    </header>
+    <div id="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 
 <script>
 export default {
-  setup() {
-    
-  },
-}
+  data(){
+      return{
+        Menu : [
+          {Menu : 'Movie', link : '/movie'},
+          {Menu : 'MyPage', link : '/myPage'},
+          {Menu : 'Login', link : '/login'}
+        ]
+      }
+    }
+  }
 </script>
 
 
@@ -27,15 +37,22 @@ export default {
 
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+header{
+  display: flex;
+  justify-content: space-between;
+}
+#home-name{
+  font-size: 30px;
+}
+
+#header-menu{
+  display: flex;
 }
 
 #nav {
+  display: flex;
+  width: 40px;;
   padding: 30px;
 }
 
@@ -46,5 +63,10 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#main{
+  width: 100vh;
+  height: 100vh;
 }
 </style>

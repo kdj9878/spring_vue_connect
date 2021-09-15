@@ -12,8 +12,7 @@
 
 
 <script>
-import {onMounted} from 'vue'
-import {reactive} from 'vue'
+import {onMounted, reactive} from 'vue'
 
 export default {
     name : 'APP',
@@ -24,7 +23,7 @@ export default {
         const data = reactive({
             boardList : []
         });
-
+    
         const getList = () => {
             fetch('http://localhost:8081/about')
             .then(response => response.json())

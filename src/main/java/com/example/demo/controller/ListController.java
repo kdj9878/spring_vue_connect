@@ -14,7 +14,7 @@ public class ListController {
     @Autowired
     private ListDAO listDao;
 
-    @GetMapping("/about")
+    @GetMapping("/movie")
     public List<ListDTO> showList(){
         
         return listDao.getList();

@@ -1,7 +1,11 @@
 
 <template>
     <div>
-        
+        <span v-for="(item, index) in data.boardList" :key="index">
+            {{item.l_no}}
+            {{item.l_name}}
+        </span>
+
     </div>
 </template>
 
@@ -9,6 +13,7 @@
 
 <script>
 import {onMounted} from 'vue'
+import {reactive} from 'vue'
 
 export default {
     name : 'APP',
@@ -16,19 +21,18 @@ export default {
         
     },
     setup(){
-
-        const data = {
+        const data = reactive({
             boardList : []
-        };
+        });
 
         const getList = () => {
             fetch('http://localhost:8081/about')
-            .then(response => response.json)
+            .then(response => response.json())
             .then(response => {
-                data.boardList = response.data;
+                data.boardList = response
             })
-            console.log(data)
-        };
+        }
+
         onMounted(() => {
             getList();
         })

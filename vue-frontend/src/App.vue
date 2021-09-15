@@ -22,9 +22,9 @@ export default {
   data(){
       return{
         Menu : [
-          {Menu : 'Movie', link : '/movie'},
-          {Menu : 'MyPage', link : '/myPage'},
-          {Menu : 'Login', link : '/login'}
+          {Menu : 'Movie', link : '/guest/movie'},
+          {Menu : 'MyPage', link : '/guest/myPage'},
+          {Menu : 'Login', link : '/guest/login'}
         ]
       }
     }

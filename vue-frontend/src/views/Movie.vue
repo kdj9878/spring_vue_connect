@@ -25,7 +25,7 @@ export default {
         });
     
         const getList = () => {
-            fetch('http://localhost:8081/movie')
+            fetch('http://localhost:8081/guest/movie')
             .then(response => response.json())
             .then(response => {
                 data.boardList = response

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,6 +29,7 @@ import io.jsonwebtoken.security.Keys;
 
 
 // 토큰의 생성, 토큰의 유효성 검증 등을 담당할 클래스
+@PropertySource("classpath:/application.properties")
 @Component  //빈을 생성
 public class TokenProvider implements InitializingBean{
 
@@ -43,7 +45,7 @@ public class TokenProvider implements InitializingBean{
     //빈을 주입 받음
     public TokenProvider(
         @Value("${jwt.secret}") String secret,
-        @Value("${jwt.token-validity-in-seconds") long tokenValidityInMilliseconds){
+        @Value("${jwt.token-validity-in-seconds}") long tokenValidityInMilliseconds){
         this.secret = secret;
         this.tokenValidityInMilliseconds = tokenValidityInMilliseconds * 1000;
 

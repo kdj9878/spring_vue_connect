@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ListDTO {
-    private int l_no;
-    private String l_name;    
+public class TokenDTO {
+    String token;
 }
+

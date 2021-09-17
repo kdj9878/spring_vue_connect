@@ -1,6 +1,6 @@
 package com.example.demo.mapperInterface;
 
-import com.example.demo.dto.MemberDTO;
+import com.example.demo.security.CostomUserDetail;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserMapper {
 
-    MemberDTO getUserDetailWithAuthentication(String username);
+
+    CostomUserDetail getUserById(String member_name);
     
 }

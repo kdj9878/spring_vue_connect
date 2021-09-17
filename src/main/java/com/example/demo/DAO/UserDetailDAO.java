@@ -1,7 +1,6 @@
 package com.example.demo.DAO;
 
-import com.example.demo.dto.MemberDTO;
-import com.example.demo.mapperInterface.UserMapper;
+import com.example.demo.security.CostomUserDetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,15 +12,18 @@ import org.springframework.stereotype.Service;
 public class UserDetailDAO implements UserDetailsService{
     
     @Autowired
-    private UserMapper usermapper;
+    private UserDAO userDao;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
-        return null;
+    public UserDetails loadUserByUsername(String member_name) throws UsernameNotFoundException {
+        CostomUserDetail user = userDao.getUserById(member_name);
+        if (user == null) {
+            throw new UsernameNotFoundException("memberName " + member_name + "not found");
+        }
+        System.out.println("***********Found User**************");
+        System.out.println("id : " + member_name);
+        return user;
     }
-    public MemberDTO getUserDetail(String username){
-        return usermapper.getUserDetailWithAuthentication(username);
-    }
+
     
 }

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import userStore from '../store/module_module'
 
 export default {
     data(){
@@ -28,7 +27,7 @@ export default {
     methods : {
         doLogin(){
             console.log(this.userInfo)
-            userStore.dispatch('login', this.userInfo)
+            this.$store.dispatch('login', this.userInfo);
         }
     }
 

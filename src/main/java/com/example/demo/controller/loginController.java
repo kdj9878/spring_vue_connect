@@ -11,7 +11,7 @@ public class loginController {
 
 
     @GetMapping(value = "/do")
-    public String login(){
-        return "what";
+    public void login(){
+        System.out.println("로그인 컨트롤러");
     }
 }

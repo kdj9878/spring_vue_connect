@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class CostomUserDetail implements UserDetails {
     private int member_id;
-    private String member_name;
-    private String member_pw;
+    private String username;
+    private String password;
     private String member_email;
     private String nickName;
     private int activated;
@@ -26,12 +26,12 @@ public class CostomUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.member_name;
+        return this.username;
     }
 
     @Override
     public String getPassword() {
-        return this.member_pw;
+        return this.password;
     }
     @Override
     public boolean isAccountNonExpired() {

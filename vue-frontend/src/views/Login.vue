@@ -7,50 +7,34 @@
                 <input id="passwordInput" type="password" placeholder="비밀번호" v-model="userInfo.password">
             </div>
             <div id="login-button">
-                <button @click="login(userInfo)">로그인</button>
+                <button @click="doLogin()">로그인</button>
             </div>
     </section>
 </template>
 
 <script>
-import { reactive } from '@vue/reactivity'
-import axios from 'axios'
+import userStore from '../store/module_module'
 
 export default {
-    setup() {
-        const userInfo = reactive({
-            username : '',
-            password : ''
-        })
-        const login = ({dispatch}, userInfo) =>{
-            return axios.post('//localhost:8081/login/do', userInfo)
-                        .then(res => {
-                            let token = res.data.token
-                            localStorage.setItem("access_token", token)
-                            dispatch("getMemberInfo")
-                        })
-                        .catch(err => {
-                            console.log(err)
-                            alert("입력하신 정보를 확인해주세요")
-                        })
-        }
-
-        const getMemberInfo = ({commit}) => {
-            let token = localStorage.getItem("access_token")
-            let config = {
-                Headers :{
-                    "access_token" : token
-                }
-            }
-            axios.get("http://localhost:8081")
-        }
-
+    data(){
         return{
-            userInfo,
-            login,
-            getMemberInfo
+            userInfo : {
+                username : '',
+                password : ''
+            }
+        }
+    },
+
+    methods : {
+        doLogin(){
+            console.log(this.userInfo)
+            userStore.dispatch('login', this.userInfo)
         }
     }
+
+
+
+
 }
 </script>
 

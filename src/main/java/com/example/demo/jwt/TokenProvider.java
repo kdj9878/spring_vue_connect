@@ -60,6 +60,10 @@ public class TokenProvider implements InitializingBean{
         
     }
 
+    // public String getUsernameFromToekn(String token){
+    //     return getUsernameFromToekn(token, Claims::getSubject);
+    // }
+
     //Authoentication객체의 권한정보를 이용해서 토큰을 생성
     public String createToken(Authentication authentication){
         // Authentication 인터페이스 : 인증 정보를 의미하는 인터페이스
@@ -74,6 +78,7 @@ public class TokenProvider implements InitializingBean{
         String authorities = authentication.getAuthorities().stream()
                     .map(GrantedAuthority :: getAuthority)
                     //stream 내 요소에 각각 GrantedAuthority의 getAuthority를 실행
+
                     .collect(Collectors.joining(","));
                     //StringBuilder를 생성한 후 , 를 추가해준 후 반환
 

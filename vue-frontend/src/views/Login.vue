@@ -7,34 +7,37 @@
                 <input id="passwordInput" type="password" placeholder="비밀번호" v-model="userInfo.password">
             </div>
             <div id="login-button">
-                <button @click="doLogin()">로그인</button>
+                <button @click="doLogin">로그인</button>
             </div>
     </section>
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity';
+import {userStore} from 'vuex'
 
 export default {
-    data(){
-        return{
-            userInfo : {
-                username : '',
-                password : ''
-            }
-        }
-    },
+    setup(){
+        const userInfo = reactive({
+            username : '',
+            password : ''
+        })
 
-    methods : {
-        doLogin(){
-            console.log(this.userInfo)
-            this.$store.dispatch('login', this.userInfo);
+        const store = userStore();
+        const doLogin = () =>{
+            store.dispatch('login', userInfo);
+
+        };
+        return {
+            userInfo,
+            doLogin
         }
+
     }
 
-
-
-
 }
+
+
 </script>
 
 <style>

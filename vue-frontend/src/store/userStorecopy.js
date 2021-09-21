@@ -1,4 +1,4 @@
-
+import {userStore} from 'vuex'
 import { login, logout, getInfo } from '../api/user'
 import { getToken, setToken, removeToken } from '../utils/auth'
 // import { resetRouter } from '@/router'
@@ -11,10 +11,10 @@ const getDefaultState = () => {
   }
 }
 
-export const store = new Vuex.Store({
-  state = getDefaultState(),
+export default userStore({
+  state : getDefaultState(),
 
-  mutations = {
+  mutations : {
     //리셋
     RESET_STATE: (state) => {
       Object.assign(state, getDefaultState())
@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
     }
   },
 
-  actions = {
+  actions : {
     // user login
     login({ commit }, userInfo) {
       const { username, password } = userInfo
